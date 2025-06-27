@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML with CSS, JS, Image</title>
+    <link rel="stylesheet" href="{% static 'external/css/style.css' %}">
+</head>
+<body>
+
+    <h1>Welcome to My Simple Page</h1>
+    <p>This page demonstrates using external CSS, JavaScript, and an image.</p>
+
+    <img src="{% static 'external/images/sampleImg.jpeg' %}" alt="Sample Image" width="300">
+
+    <button id="clickBtn">Click Me</button>
+
+    <script src="{% static 'external/js/script.js' %}"></script>
+</body>
+</html>
