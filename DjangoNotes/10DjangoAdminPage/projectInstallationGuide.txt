@@ -1,0 +1,123 @@
+Here's the complete **`projectInstallationGuide.txt`** content for setting up a Django project using **SQLite3** as the database:
+
+---
+
+### 📄 `projectInstallationGuide.txt`
+
+````
+===============================
+Django Project Installation Guide
+Database: SQLite3
+===============================
+
+✅ Step 1: Check Python and pip versions
+----------------------------------------
+> python --version
+> pip --version
+
+Make sure Python 3.8+ is installed.
+
+✅ Step 2: Create and Activate Virtual Environment
+-------------------------------------------------
+> python -m venv myworld
+
+To activate on Windows:
+> .\myworld\Scripts\activate
+
+To activate on Linux/Mac:
+$ source myworld/bin/activate
+
+✅ Step 3: Install Django
+-------------------------
+> pip install django
+
+✅ Step 4: Create a Django Project
+---------------------------------
+> django-admin startproject projectName .
+
+(The `.` ensures project is created in current folder)
+
+✅ Step 5: Create a Django App
+------------------------------
+> python manage.py startapp app
+
+✅ Step 6: Add App to Settings
+------------------------------
+In `projectName/settings.py`, add `'app',` to `INSTALLED_APPS`.
+
+✅ Step 7: Create Models
+-------------------------
+In `app/models.py`:
+
+```python
+
+
+
+from django.db import models
+
+class Doctor(models.Model):
+    doctor_name = models.CharField(max_length=150)
+    department = models.CharField(max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "doctor_details"
+
+    def __str__(self):
+        return self.doctor_name
+
+class Appoitment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    contact = models.CharField(max_length=15)
+    date = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
+    select_doctor = models.CharField(max_length=100)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name + ' - ' + self.select_doctor
+
+
+
+````
+
+## ✅ Step 8: Make Migrations & Migrate
+
+> python manage.py makemigrations
+> python manage.py migrate
+
+## ✅ Step 9: Create Superuser for Admin Panel
+
+> python manage.py createsuperuser
+
+Follow the prompts to set username, email, and password.
+
+## ✅ Step 10: Run the Development Server
+
+> python manage.py runserver
+
+Visit: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+Admin Panel: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
+
+## ✅ Step 11: Register Models in Admin Panel
+
+In `app/admin.py`:
+
+```python
+from django.contrib import admin
+from .models import Doctor, Appoitment
+
+admin.site.register(Doctor)
+admin.site.register(Appoitment)
+
+```
+
+## ✅ Step 12: Use SQLite3 (default database)
+
+SQLite3 is used by default and requires no additional setup.
+
+Database file: `db.sqlite3` will be created automatically after `migrate`.
+
+```
