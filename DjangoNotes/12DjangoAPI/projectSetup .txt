@@ -1,0 +1,22 @@
+# Create and activate virtual environment
+python -m venv env
+source env/bin/activate  # (Windows: env\Scripts\activate)
+
+# Install Django and DRF
+pip install django djangorestframework
+
+# Start project and app
+django-admin startproject student_api
+cd student_api
+python manage.py startapp students
+
+
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'students',
+]
+
+
+Django REST Framework’s generic class-based views 
