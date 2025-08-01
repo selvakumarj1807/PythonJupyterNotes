@@ -17,7 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from app import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('app.urls'))
+    path('api/', include('app.urls')),
+    # Add Html views URLs
+    path('', views.student_list, name='student_list'),
+    path('create/', views.student_create, name='student_create'),
+    path('<int:pk>/', views.student_detail, name='student_detail'),
 ]

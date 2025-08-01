@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from app.models import StudentEnquiry
@@ -57,3 +57,24 @@ class StudentEnquiryViewSet(viewsets.ModelViewSet):
     
     
 
+# Html views for StudentEnquiry
+from app.forms import StudentEnquiryForm
+
+def student_create(request):
+    if request.method == 'POST':
+        form = StudentEnquiryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('student_list')
+    else:
+        form = StudentEnquiryForm()
+    return render(request, 'student_create.html', {'form': form})
+
+
+def student_list(request):
+    students = StudentEnquiry.objects.all()
+    return render(request, 'student_list.html', {'students': students})
+
+def student_detail(request, pk):
+    student = get_object_or_404(StudentEnquiry, pk=pk)
+    return render(request, 'student_detail.html', {'student': student})
