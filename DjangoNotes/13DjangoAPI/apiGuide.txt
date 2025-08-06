@@ -41,8 +41,15 @@ Body (raw JSON):
 ----------------------------------
 URL: DELETE http://127.0.0.1:8000/api/ENQUIRY/{id}/
 
-'''
-6. SEARCH by Name (GET - Custom Action)
+
+6. SEARCH by Name (GET)
 ---------------------------------------
-URL: GET /api/ENQUIRY/get_by_name/?name=John
-'''
+URL: GET http://127.0.0.1:8000/api/ENQUIRY/?name=sample
+
+7. SEARCH by Mobile (GET)
+---------------------------------------
+URL: GET http://127.0.0.1:8000/api/ENQUIRY/?mobile=9500912222
+
+8. SEARCH by Mobile (GET - Custom Action)
+---------------------------------------
+URL: GET http://127.0.0.1:8000/api/ENQUIRY/get_by_mobile/?mobile=95009
