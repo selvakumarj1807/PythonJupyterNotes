@@ -20,3 +20,13 @@ INSTALLED_APPS = [
 
 
 Django REST Framework’s generic class-based views 
+
+Freeze the installed packages
+Run this command inside your project directory:
+
+pip freeze > requirements.txt
+
+
+# Package Install
+
+pip install -r requirements.txt
